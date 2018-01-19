@@ -1,5 +1,8 @@
 package xyz.yp.module.qx.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.yp.module.qx.domain.Permission;
@@ -45,4 +48,13 @@ public class UserServiceImpl implements UserService {
         List<User> users = userMapper.selectByParams(params);
         return users;
     }
+
+    @Override
+    public PageInfo<User> findByParams(Map<String, Object> params, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<User> users = userMapper.selectByParams(params);
+        PageInfo<User> page = new PageInfo<User>(users);
+        return page;
+    }
+
 }

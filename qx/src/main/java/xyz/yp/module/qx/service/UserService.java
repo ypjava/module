@@ -1,5 +1,6 @@
 package xyz.yp.module.qx.service;
 
+import com.github.pagehelper.PageInfo;
 import xyz.yp.module.qx.domain.Permission;
 import xyz.yp.module.qx.domain.Role;
 import xyz.yp.module.qx.domain.User;
@@ -16,5 +17,7 @@ public interface UserService {
     List<Permission> findPermissionsByUserName(String userName);
 
     List<User> findByParams(Map<String, Object> params);
+
+    PageInfo<User> findByParams(Map<String, Object> params, int currentPage, int pageSize);
 
 }

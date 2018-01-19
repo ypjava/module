@@ -15,6 +15,20 @@
         id,user_no,user_name,password,salt,create_time,update_time
     </sql>
 
+    <sql id="searchBy">
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="id != '' and id != null">
+                id = #{id}
+            </if>
+            <if test="userNo != '' and userNo != null">
+                AND user_no = #{userNo}
+            </if>
+            <if test="userName != '' and userName != null">
+                AND user_name = #{userName}
+            </if>
+        </trim>
+    </sql>
+
     <insert id="insert" parameterType="xyz.yp.module.qx.domain.User" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO qx_user(user_no,user_name,password,salt,create_time,update_time) VALUES (#{userNo},#{userName},#{password},#{salt},#{createTime},#{updateTime})
     </insert>
@@ -30,6 +44,13 @@
         <include refid="BaseColumnList" />
         FROM qx_user
         WHERE user_name = #{userName}
+    </select>
+
+    <select id="selectByParams" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumnList" />
+        FROM qx_user
+        <include refid="searchBy" />
     </select>
 
 </mapper>
