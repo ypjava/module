@@ -24,4 +24,15 @@ public class UserServiceTest {
         }
     }
 
+    @Test
+    public void testCreate() {
+        User user = new User();
+        user.setUserName("测试用户");
+        // user.setPassword("123456");
+        user.setCreateTime("2018-01-19 00:00:00");
+        userService.create(user);
+
+        System.out.println(user.getId());
+    }
+
 }

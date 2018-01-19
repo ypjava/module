@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface BaseMapper<E, ID extends Serializable> {
 
-    ID insert(E e);
+    void insert(E e);
 
     void delete(ID id);
 

@@ -32,18 +32,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Role> findRolesByUserName(String userName) {
-        List<Role> roles = roleMapper.selectByUserName(userName);
-        return roles;
-    }
-
-    @Override
-    public List<Permission> findPermissionsByUserName(String userName) {
-        List<Permission> permissions = permissionMapper.selectByUserName(userName);
-        return permissions;
-    }
-
-    @Override
     public List<User> findByParams(Map<String, Object> params) {
         List<User> users = userMapper.selectByParams(params);
         return users;
@@ -55,6 +43,16 @@ public class UserServiceImpl implements UserService {
         List<User> users = userMapper.selectByParams(params);
         PageInfo<User> page = new PageInfo<User>(users);
         return page;
+    }
+
+    @Override
+    public void create(User user) {
+        userMapper.insert(user);
+    }
+
+    @Override
+    public void deleteById(long id) {
+        userMapper.delete(id);
     }
 
 }

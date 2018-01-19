@@ -14,6 +14,8 @@ import xyz.yp.module.qx.domain.Permission;
 import xyz.yp.module.qx.domain.Role;
 import xyz.yp.module.qx.domain.User;
 import xyz.yp.module.qx.exception.ExceptionCodeEnum;
+import xyz.yp.module.qx.service.PermissionService;
+import xyz.yp.module.qx.service.RoleService;
 import xyz.yp.module.qx.service.UserService;
 
 import java.util.HashSet;
@@ -25,6 +27,10 @@ public class UserRealm extends AuthorizingRealm {
     private static Logger logger = LoggerFactory.getLogger(UserRealm.class);
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private PermissionService permissionService;
 
     public UserRealm() {
         logger.info("创建UserRealm");
@@ -34,14 +40,14 @@ public class UserRealm extends AuthorizingRealm {
         String userName = (String) principal.getPrimaryPrincipal();
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
-        List<Role> roles = userService.findRolesByUserName(userName);
+        List<Role> roles = roleService.findByUserName(userName);
         Set<String> roleNames = new HashSet<String>();
         for (Role role : roles) {
             roleNames.add(role.getName());
         }
         authorizationInfo.addRoles(roleNames);
 
-        List<Permission> permissions = userService.findPermissionsByUserName(userName);
+        List<Permission> permissions = permissionService.findByUserName(userName);
         Set<String> permissionCodes = new HashSet<String>();
         for (Permission permission : permissions) {
             permissionCodes.add(permission.getCode());
