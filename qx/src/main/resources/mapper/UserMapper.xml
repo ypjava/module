@@ -3,7 +3,7 @@
 <mapper namespace="xyz.yp.module.qx.mapper.UserMapper">
     <resultMap id="BaseResultMap" type="xyz.yp.module.qx.domain.User">
         <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="user_no" property="userNo" jdbcType="VARCHAR" />
+        <result column="code" property="code" jdbcType="VARCHAR" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
         <result column="salt" property="salt" jdbcType="VARCHAR" />
@@ -12,7 +12,7 @@
     </resultMap>
 
     <sql id="BaseColumnList">
-        id,user_no,user_name,password,salt,create_time,update_time
+        id,code,user_name,password,salt,create_time,update_time
     </sql>
 
     <sql id="searchBy">
@@ -20,8 +20,8 @@
             <if test="id != '' and id != null">
                 id = #{id}
             </if>
-            <if test="userNo != '' and userNo != null">
-                AND user_no = #{userNo}
+            <if test="code != '' and code != null">
+                AND code = #{code}
             </if>
             <if test="userName != '' and userName != null">
                 AND user_name = #{userName}
@@ -30,7 +30,7 @@
     </sql>
 
     <insert id="insert" parameterType="xyz.yp.module.qx.domain.User" keyProperty="id" useGeneratedKeys="true">
-        INSERT INTO qx_user(user_no,user_name,password,salt,create_time,update_time) VALUES (#{userNo},#{userName},#{password},#{salt},#{createTime},#{updateTime})
+        INSERT INTO qx_user(code,user_name,password,salt,create_time,update_time) VALUES (#{code},#{userName},#{password},#{salt},#{createTime},#{updateTime})
     </insert>
 
     <select id="selectAll" resultMap="BaseResultMap">
@@ -52,5 +52,30 @@
         FROM qx_user
         <include refid="searchBy" />
     </select>
+
+    <update id="update">
+        UPDATE qx_user
+        <set>
+            <if test="code != null and code != ''">
+                code = #{code},
+            </if>
+            <if test="userName != null and userName != '' ">
+                user_name = #{userName},
+            </if>
+            <if test="password != null and password != '' ">
+                password = #{password},
+            </if>
+            <if test="salt != null and salt != ''">
+                salt = #{salt},
+            </if>
+            <if test="createTime != null and createTime != ''">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
 
 </mapper>

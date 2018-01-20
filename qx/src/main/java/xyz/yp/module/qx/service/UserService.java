@@ -18,5 +18,8 @@ public interface UserService {
 
     void deleteById(long id);
 
+    void updatePassword(long userId, String oldPassword, String newPassword);
+
+    void updatePassword(long userId, String newPassword);
 
 }

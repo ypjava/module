@@ -7,6 +7,7 @@ import xyz.yp.module.core.utils.ServletUtils;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -29,11 +30,11 @@ public abstract class AbstractBaseActionWrapper {
 
         Object result = doAction();
 
-        try {
-            ServletUtils.writeToResponse(response, result);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Map<String, Object> responseData = new HashMap<String, Object>();
+        responseData.put("code", "200");
+        responseData.put("message", "请求成功");
+        responseData.put("data", result);
+        ServletUtils.writeToResponse(response, responseData);
 
         /*Object result = null;
         try {

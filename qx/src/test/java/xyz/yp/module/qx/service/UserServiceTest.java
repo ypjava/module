@@ -35,4 +35,9 @@ public class UserServiceTest {
         System.out.println(user.getId());
     }
 
+    @Test
+    public void testUpdatePassword() {
+        userService.updatePassword(1, "888888");
+    }
+
 }

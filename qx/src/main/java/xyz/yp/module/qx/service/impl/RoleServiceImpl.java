@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import xyz.yp.module.core.utils.DateUtils;
 import xyz.yp.module.qx.domain.Role;
 import xyz.yp.module.qx.mapper.RoleMapper;
 import xyz.yp.module.qx.service.RoleService;
@@ -37,8 +38,21 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void create(Role role) {
+    public void create(String code, String name) {
+        String now = DateUtils.getNow();
+        Role role = new Role();
+        role.setCode(code);
+        role.setName(name);
+        role.setCreateTime(now);
+        role.setUpdateTime(now);
         roleMapper.insert(role);
+    }
+
+    @Override
+    public void update(String roleId, String code, String name) {
+        Role role = new Role();
+        role.setId(roleId);
+
     }
 
 }

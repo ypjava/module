@@ -14,6 +14,8 @@ public interface RoleService {
 
     PageInfo<Role> findByParams(Map<String, Object> params, int currentPage, int pageSize);
 
-    void create(Role role);
+    void create(String code, String name);
+
+    void update(String roleId, String code, String name);
 
 }

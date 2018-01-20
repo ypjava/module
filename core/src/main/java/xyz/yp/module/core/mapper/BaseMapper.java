@@ -10,7 +10,7 @@ public interface BaseMapper<E, ID extends Serializable> {
 
     void delete(ID id);
 
-    void update(E e, ID id);
+    void update(E e);
 
     List<E> selectAll();
 
