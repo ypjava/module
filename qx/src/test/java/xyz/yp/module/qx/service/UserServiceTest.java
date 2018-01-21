@@ -37,7 +37,7 @@ public class UserServiceTest {
 
     @Test
     public void testUpdatePassword() {
-        userService.updatePassword(1, "888888");
+        userService.updatePassword("1", "888888");
     }
 
 }

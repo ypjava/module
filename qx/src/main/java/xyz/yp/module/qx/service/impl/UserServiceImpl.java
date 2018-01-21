@@ -51,17 +51,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(long id) {
-        userMapper.delete(id);
+    public void deleteById(String userId) {
+        userMapper.delete(userId);
     }
 
     @Override
-    public void updatePassword(long userId, String oldPassword, String newPassword) {
+    public void updatePassword(String userId, String oldPassword, String newPassword) {
 
     }
 
     @Override
-    public void updatePassword(long userId, String newPassword) {
+    public void updatePassword(String userId, String newPassword) {
         User user = new User();
         user.setId(userId);
         user.setPassword(newPassword);
