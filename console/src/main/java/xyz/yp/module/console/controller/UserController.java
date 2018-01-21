@@ -42,4 +42,25 @@ public class UserController extends AbstractBaseController {
         };
     }
 
+    @RequestMapping(value = "/user/create")
+    public void create(final User user) {
+        new AbstractBaseActionWrapper(this.response) {
+            public Object doAction() {
+                userService.create(user);
+                return user;
+            }
+        };
+    }
+
+    @RequestMapping(value = "/user/delete")
+    public void delete(final String userId) {
+        new AbstractBaseActionWrapper(this.response) {
+            public Object doAction() {
+                userService.deleteById(userId);
+                return "success";
+            }
+        };
+    }
+
+
 }

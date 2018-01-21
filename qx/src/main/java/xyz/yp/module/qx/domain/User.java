@@ -3,7 +3,7 @@ package xyz.yp.module.qx.domain;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private Long id;
+    private String id;
     private String code;
     private String userName;
     private String password;
@@ -11,11 +11,11 @@ public class User implements Serializable {
     private String createTime;
     private String updateTime;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

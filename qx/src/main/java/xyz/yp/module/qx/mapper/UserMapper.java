@@ -5,7 +5,7 @@ import xyz.yp.module.core.mapper.BaseMapper;
 import xyz.yp.module.qx.domain.User;
 
 @Repository
-public interface UserMapper extends BaseMapper<User, Long> {
+public interface UserMapper extends BaseMapper<User, String> {
 
     User selectByUserName(String userName);
 

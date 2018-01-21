@@ -16,10 +16,10 @@ public interface UserService {
 
     void create(User user);
 
-    void deleteById(long id);
+    void deleteById(String userId);
 
-    void updatePassword(long userId, String oldPassword, String newPassword);
+    void updatePassword(String userId, String oldPassword, String newPassword);
 
-    void updatePassword(long userId, String newPassword);
+    void updatePassword(String userId, String newPassword);
 
 }
