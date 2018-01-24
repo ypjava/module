@@ -27,12 +27,13 @@ class Login extends React.Component {
 
         Utils.ajaxData({
             url: this.props.source,
-            contentType: 'application/x-www-form-urlencoded',
+            // contentType: 'application/x-www-form-urlencoded',
             data: params,
             callback: function(result) {
-                alert(result);
+                alert(result.code);
             }
         });
+        return false;
     }
 
     componentWillUnmount() {
@@ -41,7 +42,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form>
                 <label>
                     用户名123:
                     <input type="text" name="userName" value={this.state.userName} onChange={this.handleChange} />
@@ -50,7 +51,7 @@ class Login extends React.Component {
                     密码:
                     <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
                 </label>
-                <input type="submit" value="Submit" />
+                <input type="button" value="Submit" onClick={this.handleSubmit} />
             </form>
         );
     }

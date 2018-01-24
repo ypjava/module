@@ -10,7 +10,7 @@ module.exports = {
         progress: true,
         port: 8888
     },
-    entry: __dirname + '/source/main.jsx',
+    entry: __dirname + '/source/index.jsx',
     output: {
         path: __dirname + '/webapp/build',
         filename: './bundle.js'

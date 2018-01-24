@@ -13,25 +13,37 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import xyz.yp.module.core.wrapper.AbstractBaseActionWrapper;
 import xyz.yp.module.qx.domain.User;
 import xyz.yp.module.qx.service.UserService;
 
 @Controller
-public class IndexController {
+public class IndexController extends AbstractBaseController {
     private Logger logger = LoggerFactory.getLogger(IndexController.class);
     @Autowired
     private UserService userService;
 
     @RequestMapping(value = "/login")
-    public @ResponseBody Object login(String userName, String password) {
-        UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+    public void login(String userName, String password, String jsonpCallback) {
+        new AbstractBaseActionWrapper(request, response) {
+            @Override
+            public Object doAction() {
+                UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+                Subject subject = SecurityUtils.getSubject();
+
+                subject.login(token);
+                User user = userService.findByUserName(userName);
+                return user;
+            }
+        };
+        /*UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
         Subject subject = SecurityUtils.getSubject();
 
-        /*try {*/
+        try {
             subject.login(token);
             User user = userService.findByUserName(userName);
             return user;
-        /*} catch (UnknownAccountException e) {
+        } catch (UnknownAccountException e) {
             logger.error("用户不存在异常");
         } catch (IncorrectCredentialsException e) {
             logger.error("密码错误异常");
