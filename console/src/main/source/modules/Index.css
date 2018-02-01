@@ -1,4 +1,8 @@
-.qx_index .trigger {
+.console_index {
+    height: 100%;
+}
+
+.console_index .trigger {
     font-size: 18px;
     line-height: 64px;
     padding: 0 24px;
@@ -6,11 +10,11 @@
     transition: color .3s;
 }
 
-.qx_index .trigger:hover {
+.console_index .trigger:hover {
     color: #1890ff;
 }
 
-.qx_index .logo {
+.console_index .logo {
     height: 32px;
     background: rgba(255,255,255,.2);
     margin: 16px;

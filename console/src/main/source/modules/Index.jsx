@@ -30,7 +30,7 @@ class Index extends React.Component {
 
     render() {
         return (
-            <Layout className="qx_index">
+            <Layout className="console_index">
                 <Sider trigger={ null } collapsible collapsed={ this.state.collapsed }>
                     <div className="logo" />
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['sub1']}>
@@ -58,15 +58,8 @@ class Index extends React.Component {
                     <Header style={{ background: '#fff', padding: 0 }}>
                         <Icon className="trigger" type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} onClick={ this.toggle } />
                     </Header>
-                    <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', height: '280px' }}>
-                        <p style="height:500px;">Content</p>
-                        <p style="height:500px;">Content</p>
-                        <p>Content</p>
-                        <p>Content</p>
-                        <p>Content</p>
-                        <p>Content</p>
-                        <p>Content</p>
-                        <p>Content</p>
+                    <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', height: 'auto' }}>
+                        首页
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
                         React-Admin ©2018 Created by 414218798@qq.com

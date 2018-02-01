@@ -30,7 +30,7 @@ class UserList extends React.Component {
 
     render() {
         return (
-            <Layout className="qx_index">
+            <Layout className="console_index">
                 <Sider trigger={ null } collapsible collapsed={ this.state.collapsed }>
                     <div className="logo" />
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['211']} defaultOpenKeys={['sub2', 'sub21']}>

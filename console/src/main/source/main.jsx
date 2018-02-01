@@ -12,7 +12,7 @@ import './utils/Utils.jsx';
 let login = <Login source="/login" />;
 ReactDOM.render((
     <Router>
-        <div>
+        <div className="console">
             <Route exact path="/" component={Index}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/user/list" component={UserList}/>
