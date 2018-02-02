@@ -1,0 +1,11 @@
+[{
+  "id": 1,
+  "code": "UserList",
+  "name": "用户管理",
+  "path": "/user/list"
+}, {
+  "id": 2,
+  "code": "RoleList",
+  "name": "角色管理",
+  "path": "/role/list"
+}]

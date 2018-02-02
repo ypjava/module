@@ -50,7 +50,7 @@ const data = [{
 }];
 
 
-class UserList extends React.Component {
+class RoleList extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -66,10 +66,10 @@ class UserList extends React.Component {
     render() {
         return (
             <Index>
-                <Table columns={columns} dataSource={data} />
+                角色管理
             </Index>
         );
     }
 }
 
-module.exports = UserList;
+module.exports = RoleList;

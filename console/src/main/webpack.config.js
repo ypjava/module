@@ -13,7 +13,8 @@ module.exports = {
     entry: __dirname + '/source/main.jsx',
     output: {
         path: __dirname + '/webapp/build',
-        filename: './bundle.js'
+        filename: './bundle.js',
+        chunkFilename: '[name].[chunkhash:5].chunk.js'
     },
     module: {
         loaders: [{

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import Index from './Index.jsx';
+//import Index from './Index.jsx';
 import './Login.css';
 
 class Login extends React.Component {
