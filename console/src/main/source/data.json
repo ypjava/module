@@ -1,4 +1,9 @@
 [{
+  "id": 0,
+  "code": "Workbench",
+  "name": "控制台",
+  "path": "/workbench"
+}, {
   "id": 1,
   "code": "UserList",
   "name": "用户管理",

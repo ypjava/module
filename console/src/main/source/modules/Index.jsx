@@ -2,12 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Login from './Login.jsx';
+import Workbench from './Workbench.jsx';
+import UserList from './UserList.jsx';
+
 import './Index.css';
 
 const { Header, Sider, Content, Footer } = Layout;
 const SubMenu = Menu.SubMenu;
 
-class Index extends React.Component {
+class ConsoleFrame extends React.Component {
     constructor(props) {
         super(props);
         this.state = { collapsed: false };
@@ -25,14 +31,6 @@ class Index extends React.Component {
         console.log(e.key);
     }
 
-    componentWillMount() {
-
-    }
-
-    componentWillUnmount() {
-
-    }
-
     render() {
         return (
             <Layout className="console_index">
@@ -40,13 +38,15 @@ class Index extends React.Component {
                     <div className="logo" />
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['sub1']} onClick={this.handleClick}>
                         <Menu.Item key="sub1">
-                            <Icon type="home" />
-                            <span>首页</span>
+                            <Link to="/workbench">
+                                <Icon type="home" />
+                                <span>首页</span>
+                            </Link>
                         </Menu.Item>
                         <SubMenu key="sub2" title={<span><Icon type="laptop" /><span>系统管理</span></span>}>
                             <SubMenu key="sub21" title={<span><Icon type="safety" /><span>权限管理</span></span>}>
                                 <Menu.Item key="211"><Link to="/user/list">用户管理</Link></Menu.Item>
-                                <Menu.Item key="212"><Link to="/role/list">角色管理</Link></Menu.Item>
+                                <Menu.Item key="212">角色管理</Menu.Item>
                                 <Menu.Item key="213">菜单管理</Menu.Item>
                                 <Menu.Item key="214">权限管理</Menu.Item>
                             </SubMenu>
@@ -64,17 +64,28 @@ class Index extends React.Component {
                         <Icon className="trigger" type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} onClick={ this.toggle } />
                     </Header>
                     <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', height: 'auto' }}>
-                        {
-                            React.Children.map(this.props.children, function(content) {
-                                return <div>{ content }</div>;
-                            })
-                        }
+                        { this.props.children }
+                        <Route path="/workbench" component={Workbench} />
+                        <Route path="/user/list" component={UserList} />
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
                         React-Admin ©2018 Created by 414218798@qq.com
                     </Footer>
                 </Layout>
             </Layout>
+        );
+    }
+}
+
+class Index extends React.Component {
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route path="/login" component={Login} />
+                    <Route path="/" component={ConsoleFrame} />
+                </Switch>
+            </Router>
         );
     }
 }
