@@ -31,7 +31,7 @@ class App extends React.Component {
         return (
             <Switch>
                 <Route path="/login" component={Login} />
-                <Route path="/index" component={Index} />
+                <Route path="/" component={Index} />
             </Switch>
         );
     }
