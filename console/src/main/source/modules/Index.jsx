@@ -14,6 +14,14 @@ const { Header, Sider, Content, Footer } = Layout;
 const SubMenu = Menu.SubMenu;
 
 class ConsoleMenu extends React.Component {
+    getSubMenu(menuList) {
+        menuList.map((menu) => {
+            if (menu.isLeaf == 0) {
+                this.getSubMenu()
+            }
+        });
+    }
+
     render() {
         return (
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['sub1']} onClick={this.handleClick}>

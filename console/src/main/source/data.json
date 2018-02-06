@@ -1,32 +1,49 @@
-[{
-  "id": 1,
-  "parentId": 0,
-  "code": "Workbench",
-  "name": "控制台",
-  "path": "/workbench",
-  "isLeaf"
-},{
-  "id": 2,
-  "parentId": 0,
-  "code": "",
-  "name": "系统管理",
-  "path": "/system"
-},{
-  "id": 201,
-  "parentId": 2,
-  "code": "",
-  "name": "权限管理",
-  "path": "/right"
-}, {
-  "id": 20101,
-  "parentId": 201,
-  "code": "UserList",
-  "name": "用户管理",
-  "path": "/user/list"
-}, {
-  "id": 20102,
-  "parentId": 201,
-  "code": "RoleList",
-  "name": "角色管理",
-  "path": "/role/list"
-}]
+[
+  {
+    "id": 1,
+    "parentId": 0,
+    "code": "Workbench",
+    "name": "控制台",
+    "path": "/workbench",
+    "isLeaf": 0,
+    "children": []
+  },
+  {
+    "id": 2,
+    "parentId": 0,
+    "code": "",
+    "name": "系统管理",
+    "path": "/system",
+    "isLeaf": 0,
+    "children": [
+      {
+        "id": 201,
+        "parentId": 2,
+        "code": "",
+        "name": "权限管理",
+        "path": "/right",
+        "isLeaf": 0,
+        "children": [
+          {
+            "id": 20101,
+            "parentId": 201,
+            "code": "UserList",
+            "name": "用户管理",
+            "path": "/user/list",
+            "isLeaf": 1,
+            "children": []
+          },
+          {
+            "id": 20102,
+            "parentId": 201,
+            "code": "RoleList",
+            "name": "角色管理",
+            "path": "/role/list",
+            "isLeaf": 1,
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]
