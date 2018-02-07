@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Icon, Divider } from 'antd';
-import Index from './index.jsx';
 
 const columns = [{
     title: 'Name',
@@ -65,9 +64,9 @@ class RoleList extends React.Component {
 
     render() {
         return (
-            <Index>
+            <div>
                 角色管理
-            </Index>
+            </div>
         );
     }
 }

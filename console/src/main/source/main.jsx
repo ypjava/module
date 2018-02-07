@@ -30,8 +30,8 @@ class App extends React.Component {
     render() {
         return (
             <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/" component={Index} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/index" component={Index} />
             </Switch>
         );
     }
