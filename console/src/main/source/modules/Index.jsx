@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
 import Reflux from 'reflux';
+import Actions from './Actions.jsx';
 
 import data from '../data.json';
 import Workbench from './Workbench.jsx';
@@ -11,9 +12,9 @@ import './Index.css';
 const { Header, Sider, Content, Footer } = Layout;
 const SubMenu = Menu.SubMenu;
 
-const Actions = Reflux.createActions([
+/*const Actions = Reflux.createActions([
     "updateComponent"
-]);
+]);*/
 
 class StatusStore extends Reflux.Store {
     constructor() {

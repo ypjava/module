@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Table, Icon, Divider } from 'antd';
+import { Table, Icon, Divider, Button, Breadcrumb } from 'antd';
+import Actions from './Actions.jsx';
 
 const columns = [{
     title: 'Name',
@@ -52,6 +53,7 @@ const data = [{
 class UserList extends React.Component {
     constructor(props) {
         super(props);
+        this.add = this.add.bind(this);
     }
 
     componentWillMount() {
@@ -62,10 +64,24 @@ class UserList extends React.Component {
 
     }
 
+    add() {
+        console.log("添加用户");
+        Actions.updateComponent("UserAdd");
+    }
+
     render() {
         return (
             <div>
-                <Table columns={columns} dataSource={data} />
+                <Breadcrumb>
+                    <Breadcrumb.Item>系统管理</Breadcrumb.Item>
+                    <Breadcrumb.Item>权限管理</Breadcrumb.Item>
+                    <Breadcrumb.Item>用户管理</Breadcrumb.Item>
+                </Breadcrumb>
+                <div className="table-operations">
+                    <Button onClick={this.add}>添加</Button>
+                    <Button onClick={this.clearFilters}>删除</Button>
+                </div>
+                <Table columns={columns} dataSource={data} bordered />
             </div>
         );
     }

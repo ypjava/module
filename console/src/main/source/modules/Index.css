@@ -29,3 +29,12 @@
     -o-transition: color .3s;
     transition: color .3s;
 }
+
+
+.table-operations {
+    margin-bottom: 16px;
+}
+
+.table-operations > button {
+    margin-right: 8px;
+}
